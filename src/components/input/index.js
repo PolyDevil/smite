@@ -2,7 +2,7 @@ import React from 'react';
 import c from 'classnames';
 import './style.css';
 
-export default function({ value, isCorrect, gods, onChange, onKeyDown, next, skip }) {
+export default function({ value, isCorrect, isFinished, gods, onChange, onKeyDown, next, skip, playAgain }) {
   return (
     <label className="search__label">
       <input
@@ -14,13 +14,20 @@ export default function({ value, isCorrect, gods, onChange, onKeyDown, next, ski
         value={value}
       />
 
-      <button
-        title="Answer"
-        onClick={() => next()}
-        className={c("action__next", {
-          "--valid": isCorrect,
-        })}
-      >Next</button>
+      {isFinished
+        ? (<button
+          title="Play Again"
+          onClick={() => playAgain()}
+          className="action__next --valid"
+        >Play Again</button>)
+        : (<button
+          title="Answer"
+          onClick={() => next()}
+          className={c("action__next", {
+            "--valid": isCorrect,
+          })}
+        >Next</button>)
+      }
 
       <button
         title="Skip"

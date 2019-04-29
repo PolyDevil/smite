@@ -172,7 +172,11 @@ class App extends Component {
 
   onKeyDown(e) {
     if (e.key === 'Enter') {
-      this.next();
+      const { value } = this.state;
+
+      if (value) {
+        this.next();
+      }
     }
   }
 
@@ -352,7 +356,7 @@ class App extends Component {
   }
 
   render () {
-    const { gods, hints, history, isCorrect, isModalOpen, puzzle, questionId, timer, value } = this.state;
+    const { gods, hints, history, isCorrect, isModalOpen, isFinished, puzzle, questionId, timer, value } = this.state;
 
     return (
       <div className="app">
@@ -378,6 +382,8 @@ class App extends Component {
             onKeyDown={(e) => this.onKeyDown(e)}
             next={() => this.next()}
             skip={() => this.skip()}
+            isFinished={isFinished}
+            playAgain={() => this.restart()}
           />
 
           <Answer answer={history[questionId]} />
