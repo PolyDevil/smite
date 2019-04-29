@@ -1,0 +1,63 @@
+.hint {
+  position: relative;
+  margin: 1rem;
+  width: 128px;
+  min-height: 128px;
+}
+
+.hint__svg {
+  position: relative;
+}
+
+.hint__svg_loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  opacity: .4;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.hint__svg_time {
+  font-size: 1rem;
+  font-style: italic;
+  opacity: .4;
+}
+
+.hint__figure {
+  margin: 0;
+  position: relative;
+  padding-bottom: 2rem;
+  min-height: calc(128px + 2rem);
+}
+
+.hint__description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-size: 1.4rem;
+}
+
+.hint__image {
+  animation: splash .3s normal forwards ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes splash {
+  from {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1.4, 1.4);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}

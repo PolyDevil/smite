@@ -1,0 +1,35 @@
+.search__label {
+}
+
+.search__input {
+  width: 20rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-width: 0 0 4px 0;
+  border-color: #386ae8;
+  color: #ccd1dd;
+  background: rgba(0, 0, 0, .2);
+}
+
+.action__next {
+  padding: 1rem;
+  font-size: 1rem;
+  border-width: 0 0 4px 0;
+  border-color: #386ae8;
+  color: #ccd1dd;
+  background: rgba(0, 0, 0, .2);
+}
+
+.action__skip {
+  padding: 1rem;
+  font-size: 1rem;
+  border-width: 0 0 4px 0;
+  border-color: #1047d2;
+  color: #ccd1dd;
+  background: rgba(0, 0, 0, .2);
+  transition: opacity .4s ease-in;
+}
+.action__skip.--disabled {
+  opacity: 0;
+  pointer-events: none;
+}

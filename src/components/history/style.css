@@ -1,0 +1,27 @@
+.history {
+  padding: 0 .8rem;
+  max-width: 30rem;
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  grid-gap: .8rem;
+}
+
+.history_status {
+  height: .8rem;
+  margin: .4rem 0;
+  color: #3b414e;
+  background: currentColor;
+  transition: color .4s ease-in, background .4s ease-in;
+}
+.history_status.--current {
+  color: #dee131;
+}
+.history_status.--valid {
+  color: #31e184;
+}
+.history_status.--invalid {
+  color: #e13131;
+}

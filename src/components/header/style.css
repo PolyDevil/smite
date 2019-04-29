@@ -1,0 +1,29 @@
+.header {
+  background: #262d3d;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header__countdown {
+  font-size: 2rem;
+  padding: 10px;
+  color: #ccd1dd;
+}
+.header__countdown.--last {
+  color: #e13131;
+}
+.header__countdown.--finished {
+  animation: none;
+}
+
+.header__timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #386ae8;
+  transition: transform 1s linear;
+}
