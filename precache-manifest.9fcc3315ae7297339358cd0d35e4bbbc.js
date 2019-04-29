@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a341d3371fc759e691e5b2ae71a85505",
+    "revision": "7bb2e0fef6640d7bbcf35a7cebd20195",
     "url": "/smite/index.html"
   },
   {
