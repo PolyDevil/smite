@@ -44,6 +44,7 @@ class App extends Component {
       answer: "",
       god: {},
       time: defaultTime,
+      timeSpend: 0,
       isValid: false
     })),
 
@@ -83,25 +84,22 @@ class App extends Component {
       const { history, questionId, timer } = this.state;
 
       if(timer > 0) {
-        if (history[questionId].time > 0) {
-          this.setState({
-            timer: timer - 1,
+        this.setState({
+          timer: timer - 1,
 
-            history: history.map((item, index) => index !== questionId
-              ? item
-              : {
-                ...item,
-                ...{
-                  time: item.time - 1,
-                }
-              }
-            ),
-          });
-        } else {
-          this.setState({
-            timer: timer - 1,
-          });
-        }
+          history: history.map((item, index) => index !== questionId
+            ? item
+            : {
+              ...item,
+
+              ...(history[questionId].time > 0 && {
+                time: item.time - 1,
+              }),
+
+              timeSpend: item.timeSpend + 1,
+            }
+          ),
+        });
       } else {
         this.interval.stop();
         this.finish();
@@ -124,6 +122,7 @@ class App extends Component {
         answer: "",
         god: {},
         time: defaultTime,
+        timeSpend: 0,
         isValid: false
       })),
 

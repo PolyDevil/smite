@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 
 export default function({ close, defaultTime, isModalOpen, history, playAgain }) {
-  const time = history.map(e => e.time).reduce((p, c) => p + (defaultTime - c), 0);
+  const time = history.map(e => e.timeSpend).reduce((p, c) => p + c, 0);
 
   return isModalOpen && (
     <section className="results">
@@ -26,9 +26,10 @@ export default function({ close, defaultTime, isModalOpen, history, playAgain })
               <h5 className="list__title">{e.god.title}</h5>
               <hgroup className="list__headers">
                 <h4 className="list__header --valid">{e.god.god}</h4>
+                {!e.answer && <h4 className="list__header --invalid">"no answer"</h4>}
                 {!e.isValid && <h4 className="list__header --invalid">{e.answer}</h4>}
               </hgroup>
-              <time className="list__time">{defaultTime - e.time}s</time>
+              <time className="list__time">{e.timeSpend}s</time>
               <figure className="list__figure">
                 <img className="list__figure_image" alt={`class: ${e.god.class.toLowerCase()}`} src={`./images/class/${e.god.class.toLowerCase()}.png`} />
                 <figcaption className="list__figure_label">{e.god.class.toLowerCase()}</figcaption>
