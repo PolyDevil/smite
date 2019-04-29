@@ -5,6 +5,9 @@
   bottom: 0;
   left: 0;
   background: #5d5d5d59;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 
   transform: scaleY(0.01) scaleX(0);
@@ -29,10 +32,10 @@
 
 .results__container {
   position: fixed;
-  top: 10%;
-  right: 10%;
-  bottom: 10%;
-  left: 10%;
+  max-width: 1000px;
+  max-height: 800px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 
   transform: scale(0);
@@ -46,12 +49,32 @@
   height: 64px;
   font-size: 1.4rem;
   margin: 0;
+  padding: 0 64px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #252933;
   color: #ccd1dd;
   font-weight: normal;
+}
+@media screen and (max-width: 768px) {
+  .results__header {
+    flex-flow: column;
+    font-size: 1.1rem;
+  }
+}
+
+.results__header_title {
+
+}
+
+.results__header_separator {
+
+}
+@media screen and (max-width: 768px) {
+  .results__header_separator {
+    display: none;
+  }
 }
 
 .results__header_time {

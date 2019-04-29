@@ -9,12 +9,22 @@ export default function({ close, defaultTime, isModalOpen, history, playAgain })
       <div className="results__container">
         <button className="action__close" onClick={() => close()}>✗</button>
         <header className="results__header">
-          Results:&nbsp;
-          <var className="results__header_counter">{history.filter(e => e.isValid).length}</var>/<var className="results__header_counter">{history.length}</var>
-          &nbsp;|&nbsp;
-          Average time:&nbsp;<time className="results__header_time">{Number(time / 7).toPrecision(2)}s</time>
-          &nbsp;|&nbsp;
-          Total time:&nbsp;<time className="results__header_time">{time}s</time>
+          <span className="results__header_title">
+            Results:&nbsp;
+            <var className="results__header_counter">{history.filter(e => e.isValid).length}</var>/<var className="results__header_counter">{history.length}</var>
+          </span>
+          <span className="results__header_separator">
+            &nbsp;|&nbsp;
+          </span>
+          <span className="results__header_title">
+            Average time:&nbsp;<time className="results__header_time">{Number(time / 7).toPrecision(2)}s</time>
+          </span>
+          <span className="results__header_separator">
+            &nbsp;|&nbsp;
+          </span>
+          <span className="results__header_title">
+            Total time:&nbsp;<time className="results__header_time">{time}s</time>
+          </span>
         </header>
 
         <ul className="results__list">
