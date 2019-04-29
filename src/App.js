@@ -145,7 +145,7 @@ class App extends Component {
     this.setState({
       value: v,
       gods: godNames.filter(e => e.toLowerCase().includes(v.toLowerCase()))
-                    .sort((x, y) => x.indexOf(v.toLowerCase()) - y.indexOf(v.toLowerCase()))
+                    .sort((x, y) => x.toLowerCase().indexOf(v.toLowerCase()) - y.toLowerCase().indexOf(v.toLowerCase()))
                     .slice(0, 7),
     });
 
