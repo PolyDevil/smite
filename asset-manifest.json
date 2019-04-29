@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/smite/static/css/main.bb6d36fd.chunk.css",
-    "main.js": "/smite/static/js/main.2c7cb349.chunk.js",
-    "main.js.map": "/smite/static/js/main.2c7cb349.chunk.js.map",
+    "main.js": "/smite/static/js/main.847f4229.chunk.js",
+    "main.js.map": "/smite/static/js/main.847f4229.chunk.js.map",
     "runtime~main.js": "/smite/static/js/runtime~main.9202f59d.js",
     "runtime~main.js.map": "/smite/static/js/runtime~main.9202f59d.js.map",
     "static/js/2.1bd34c75.chunk.js": "/smite/static/js/2.1bd34c75.chunk.js",
     "static/js/2.1bd34c75.chunk.js.map": "/smite/static/js/2.1bd34c75.chunk.js.map",
     "index.html": "/smite/index.html",
-    "precache-manifest.3a095b8a8e039651f8c51e6bc151aa1e.js": "/smite/precache-manifest.3a095b8a8e039651f8c51e6bc151aa1e.js",
+    "precache-manifest.eb64eaeed1068fc46e6a4222ad523697.js": "/smite/precache-manifest.eb64eaeed1068fc46e6a4222ad523697.js",
     "service-worker.js": "/smite/service-worker.js",
     "static/css/main.bb6d36fd.chunk.css.map": "/smite/static/css/main.bb6d36fd.chunk.css.map"
   }

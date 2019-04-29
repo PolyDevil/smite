@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "550bfd987c609244495a3bb307f919eb",
+    "revision": "875e2a801a0adbdb1f196dc8242f1a83",
     "url": "/smite/index.html"
   },
   {
-    "revision": "2ba309d402e2c5e99557",
+    "revision": "7bbb037f506548a95619",
     "url": "/smite/static/css/main.bb6d36fd.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smite/static/js/2.1bd34c75.chunk.js"
   },
   {
-    "revision": "2ba309d402e2c5e99557",
-    "url": "/smite/static/js/main.2c7cb349.chunk.js"
+    "revision": "7bbb037f506548a95619",
+    "url": "/smite/static/js/main.847f4229.chunk.js"
   },
   {
     "revision": "5245b64ce292c04af5c6",
