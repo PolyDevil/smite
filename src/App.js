@@ -33,6 +33,7 @@ class App extends Component {
   state = {
     value: '',
     isCorrect: false,
+    isFinished: false,
     isModalOpen: false,
     gods: godNames.slice(0, 7),
     hints: defaultHints,
@@ -58,6 +59,26 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.startTimer();
+  }
+
+  componentWillUnmount() {
+    this.interval.stop();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { history, questionId, timer } = this.state;
+
+    if (prevState.timer - timer === 1) {
+      if (history[questionId].time + 1 === firstHintTime) {
+        this.useHint('class');
+      } else if (history[questionId].time + 1 === secondHintTime) {
+        this.useHint('pantheon');
+      }
+    }
+  }
+
+  startTimer() {
     this.interval = new _setInterval(() => {
       const { history, questionId, timer } = this.state;
 
@@ -88,20 +109,35 @@ class App extends Component {
     }, 1000);
   }
 
-  componentWillUnmount() {
-    this.interval.stop();
-  }
+  restart() {
+    this.setState({
+      value: '',
+      isCorrect: false,
+      isFinished: false,
+      isModalOpen: false,
+      gods: godNames.slice(0, 7),
+      hints: defaultHints,
+      timer: defaultTime * 7,
 
-  componentDidUpdate(prevProps, prevState) {
-    const { history, questionId, timer } = this.state;
+      history: Array.from(new Array(7)).map((e, i) => ({
+        id: i,
+        answer: "",
+        god: {},
+        time: defaultTime,
+        isValid: false
+      })),
 
-    if (prevState.timer - timer === 1) {
-      if (history[questionId].time + 1 === firstHintTime) {
-        this.useHint('class');
-      } else if (history[questionId].time + 1 === secondHintTime) {
-        this.useHint('pantheon');
-      }
-    }
+      puzzle: gods.map((e, i) => i).sort(() => .5 - Math.random()).slice(0, 7).map(e => ({
+        god: gods[e].name,
+        title: gods[e].title,
+        pantheon: gods[e].pantheon,
+        class: gods[e].class,
+        image: gods[e].image,
+      })),
+
+      questionId: 0,
+    });
+    this.startTimer();
   }
 
   onChange(e) {
@@ -215,68 +251,75 @@ class App extends Component {
   }
 
   next() {
-    const { history, isCorrect, puzzle, questionId, value } = this.state;
+    const { history, isCorrect, isFinished, puzzle, questionId, value } = this.state;
 
-    if (history.filter(e => !e.answer).length) {
-      this.interval.resume();
+    if (!isFinished) {
+      if (history.filter(e => !e.answer).length) {
+        this.interval.resume();
 
-      if (!isCorrect || value.toLowerCase() === puzzle[questionId].god.toLowerCase()) {
-        this.skip();
+        if (!isCorrect || value.toLowerCase() === puzzle[questionId].god.toLowerCase()) {
+          this.skip();
+        }
+      } else {
+        this.finish();
       }
-    } else {
-      this.finish();
     }
   }
 
   skip() {
-    const { history, puzzle, questionId } = this.state;
+    const { history, isFinished, puzzle, questionId } = this.state;
 
-    const questions = [
-      ...history.filter(e => e.id !== questionId && !e.answer && e.id > questionId),
-      ...history.filter(e => e.id !== questionId && !e.answer),
-    ];
+    if(!isFinished) {
+      const questions = [
+        ...history.filter(e => e.id !== questionId && !e.answer && e.id > questionId),
+        ...history.filter(e => e.id !== questionId && !e.answer),
+      ];
 
-    if (questions.length) {
-      this.interval.resume();
-      const god = puzzle[questions[0].id];
-      const time = history[questions[0].id].time;
+      if (questions.length) {
+        this.interval.resume();
+        const god = puzzle[questions[0].id];
+        const time = history[questions[0].id].time;
 
-      this.setState({
-        value: '',
-        isCorrect: false,
-        gods: godNames.slice(0, 7),
-        questionId: questions[0].id,
+        this.setState({
+          value: '',
+          isCorrect: false,
+          gods: godNames.slice(0, 7),
+          questionId: questions[0].id,
 
-        hints: {
-          ...defaultHints,
+          hints: {
+            ...defaultHints,
 
-          ...(time <= secondHintTime && {
-            pantheon: {
-              image: `./images/pantheon/${god.pantheon.toLowerCase()}.png`,
-              text: god.pantheon,
-              isActivated: true,
-            },
-          }),
+            ...(time <= secondHintTime && {
+              pantheon: {
+                image: `./images/pantheon/${god.pantheon.toLowerCase()}.png`,
+                text: god.pantheon,
+                isActivated: true,
+              },
+            }),
 
-          ...(time <= firstHintTime && {
-            class: {
-              image: `./images/class/${god.class.toLowerCase()}.png`,
-              text: god.class,
-              isActivated: true,
-            },
-          }),
-        },
-      });
-    } else {
-      this.interval.pause();
-      this.finish();
+            ...(time <= firstHintTime && {
+              class: {
+                image: `./images/class/${god.class.toLowerCase()}.png`,
+                text: god.class,
+                isActivated: true,
+              },
+            }),
+          },
+        });
+      } else {
+        this.interval.pause();
+        this.finish();
+      }
     }
   }
 
   finish() {
+    this.interval.stop();
     const { history, puzzle } = this.state;
 
     this.setState({
+      isFinished: true,
+
       history: history.map((item, index) => item.answer
         ? item
         : {
@@ -346,6 +389,7 @@ class App extends Component {
 
         <Results
           close={() => this.closeModal()}
+          playAgain={() => this.restart()}
           isModalOpen={isModalOpen}
           defaultTime={defaultTime}
           history={history}

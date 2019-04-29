@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-export default function({ close, defaultTime, isModalOpen, history}) {
+export default function({ close, defaultTime, isModalOpen, history, playAgain }) {
   const time = history.map(e => e.time).reduce((p, c) => p + (defaultTime - c), 0);
 
   return isModalOpen && (
@@ -10,9 +10,11 @@ export default function({ close, defaultTime, isModalOpen, history}) {
         <button className="action__close" onClick={() => close()}>✗</button>
         <header className="results__header">
           Results:&nbsp;
-          <var className="results__header_counter">{history.filter(e => e.isValid).length}</var>
-          /
-          <var className="results__header_counter">{history.length}</var>
+          <var className="results__header_counter">{history.filter(e => e.isValid).length}</var>/<var className="results__header_counter">{history.length}</var>
+          &nbsp;|&nbsp;
+          Average time:&nbsp;<time className="results__header_time">{Number(time / 7).toPrecision(2)}s</time>
+          &nbsp;|&nbsp;
+          Total time:&nbsp;<time className="results__header_time">{time}s</time>
         </header>
 
         <ul className="results__list">
@@ -40,7 +42,7 @@ export default function({ close, defaultTime, isModalOpen, history}) {
         </ul>
 
         <footer className="results__footer">
-          Average time:&nbsp;<time className="results__footer_time">{Number(time / 7).toPrecision(2)}s</time>&nbsp;|&nbsp;Total time:&nbsp;<time className="results__footer_time">{defaultTime * 7}s</time>
+          <button className="action__play_again" onClick={() => playAgain()}>Play Again</button>
         </footer>
       </div>
     </section>

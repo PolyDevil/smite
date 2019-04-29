@@ -54,7 +54,12 @@
   font-weight: normal;
 }
 
+.results__header_time {
+  text-decoration: underline;
+}
+
 .results__header_counter {
+  font-style: normal;
 }
 
 .results__list {
@@ -142,10 +147,15 @@
   background: #252933;
   color: #ccd1dd;
   font-weight: normal;
+  position: relative;
 }
 
-.results__footer_time {
-  text-decoration: underline;
+.action__play_again {
+  padding: 1rem 3rem;
+  border: 0;
+  background: #43e182;
+  font-size: 1rem;
+  color: #1e2128;
 }
 
 @keyframes unfoldIn {
