@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/smite/static/css/main.887387bc.chunk.css",
+    "main.js": "/smite/static/js/main.706f7ca4.chunk.js",
+    "main.js.map": "/smite/static/js/main.706f7ca4.chunk.js.map",
+    "runtime~main.js": "/smite/static/js/runtime~main.9202f59d.js",
+    "runtime~main.js.map": "/smite/static/js/runtime~main.9202f59d.js.map",
+    "static/js/2.1bd34c75.chunk.js": "/smite/static/js/2.1bd34c75.chunk.js",
+    "static/js/2.1bd34c75.chunk.js.map": "/smite/static/js/2.1bd34c75.chunk.js.map",
+    "index.html": "/smite/index.html",
+    "precache-manifest.2f2c23fced242fa3674fe6f09dd9bd69.js": "/smite/precache-manifest.2f2c23fced242fa3674fe6f09dd9bd69.js",
+    "service-worker.js": "/smite/service-worker.js",
+    "static/css/main.887387bc.chunk.css.map": "/smite/static/css/main.887387bc.chunk.css.map"
+  }
+}
