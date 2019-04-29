@@ -2,8 +2,10 @@
   "name": "smite",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://polydevil.github.io/smite",
   "dependencies": {
     "classnames": "^2.2.6",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
@@ -16,6 +18,8 @@
     "setinterval-plus": "^1.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
